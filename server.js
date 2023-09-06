@@ -27,8 +27,8 @@ if (!module.parent) {
   // Add your code to start the server listening at PORT below:
   app.listen(PORT, () => {
     console.log(`Listening on port ${PORT}...`);
-    console.log(`Serving files from ${__dirname}${path.sep}public`);
-    app.use(express.static(`${__dirname}${path.sep}public`));
+    console.log(`Serving files from ${__dirname}`);
+    app.use(express.static(`${__dirname}`));
   });
 }
 
