@@ -78,5 +78,6 @@ module.exports = {
 	create,
 	update,
 	deleteOne,
+	deleteAll,
 	formatType
 }

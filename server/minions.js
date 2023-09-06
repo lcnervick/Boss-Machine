@@ -24,6 +24,7 @@ minionsRouter.put('/:minionId', (req, res, next) => {
 	update(res, { id, name, title, salary });
 });
 
+// DELETE /:minionId
 minionsRouter.delete('/:minionId', (req, res, next) => {
 	deleteOne(res);
 });
