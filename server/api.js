@@ -11,7 +11,7 @@ apiRouter.all('/:elementType/:elementId?', (req, res, next) => {
 		type: req.params.elementType,
 		name: formatType(req.params.elementType)
 	};
-	console.log("Request Element Params", res.element);
+	console.log("Request Element Params", req.method, res.element);
 	next();
 });
 

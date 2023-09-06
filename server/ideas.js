@@ -1,6 +1,17 @@
 const express = require('express');
 const { getAll, getOne, create, update, deleteOne } = require('./helperFuncs');
+const checkMillionDollarIdea = require('./checkMillionDollarIdea');
 const ideasRouter = express.Router();
+
+ideasRouter.use((req, res, next) => {
+	if(req.method === "POST" || req.method === "PUT") {
+		console.log("Checking Idea", req.body);
+		if(!checkMillionDollarIdea(Number(req.body.weeklyRevenue), Number(req.body.numWeeks))) {
+			res.status(200).json({});
+		}
+	}
+	next();
+});
 
 // GET /
 ideasRouter.get('/', (req, res, next) => {
