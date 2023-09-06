@@ -1,6 +1,6 @@
 const express = require('express');
-const { deleteAll, getAll, create } = require('./helperFuncs');
-const { createMeeting } = require('./db');
+const { deleteAll, getAll } = require('./helperFuncs');
+const { createMeeting, addToDatabase } = require('./db');
 const meetingsRouter = express.Router();
 
 // GET /
@@ -11,9 +11,10 @@ meetingsRouter.get('/', (req, res, next) => {
 // POST /
 meetingsRouter.post('/', (req, res, next) => {
 	const { name, type } = res.element;
-	console.log(`Creating New ${name}...`);
+	// console.log(`Creating New ${name}...`);
 	try {
 		const newMeeting = createMeeting();
+		addToDatabase('meetings', newMeeting);
 		res.status(201).json(newMeeting);
 	} catch(err) {
 		res.status(400).send(err);

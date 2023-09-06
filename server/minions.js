@@ -14,14 +14,14 @@ minionsRouter.get('/:minionId', (req, res, next) => {
 
 // POST /
 minionsRouter.post('/', (req, res, next) => {
-	const { name, title, salary } = req.body;
-	create(res, { name, title, salary });
+	const { name, title, salary, weaknesses } = req.body;
+	create(res, { name, title, salary, weaknesses });
 });
 
 // PUT /:minionId
 minionsRouter.put('/:minionId', (req, res, next) => {
-	const { id, name, title, salary } = req.body;
-	update(res, { id, name, title, salary });
+	const { id, name, title, salary, weaknesses } = req.body;
+	update(res, { id, name, title, salary, weaknesses });
 });
 
 // DELETE /:minionId

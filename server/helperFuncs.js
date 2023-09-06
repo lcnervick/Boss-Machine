@@ -4,7 +4,7 @@ const formatType = type => type.slice(0, -1).replace(/^./, c => c.toUpperCase())
 
 const getAll = (res) => {
 	const { type } = res.element;
-	console.log(`Getting all ${type}...`);
+	// console.log(`Getting all ${type}...`);
 	const data = getAllFromDatabase(type);
 	if (data) {
 		res.status(200).json(data);
@@ -15,7 +15,7 @@ const getAll = (res) => {
 
 const getOne = (res) => {
 	const { type, name, id } = res.element;
-	console.log(`Getting ${name} ${id}...`);
+	// console.log(`Getting ${name} ${id}...`);
 	const data = getFromDatabaseById(type, id);
 	if (data) {
 		res.status(200).json(data);
@@ -26,7 +26,7 @@ const getOne = (res) => {
 
 const create = (res, data) => {
 	const { name, type } = res.element;
-	console.log(`Creating New ${name}...`);
+	// console.log(`Creating New ${name}...`);
 	try {
 		const newEntity = addToDatabase(type, data);
 		res.status(201).json(newEntity);
@@ -37,7 +37,7 @@ const create = (res, data) => {
 
 const update = (res, data) => {
 	const { name, type, id } = res.element;
-	console.log(`Updating ${name} ${id}...`);
+	// console.log(`Updating ${name} ${id}...`);
 	try {
 		const updatedEntity = updateInstanceInDatabase(type, data);
 		if (!updatedEntity) {
@@ -46,13 +46,13 @@ const update = (res, data) => {
 			res.status(200).json(updatedEntity);
 		}
 	} catch(err) {
-		res.status(400).send(err);
+		res.status(404).send(err);
 	}
 }
 
 const deleteOne = (res) => {
 	const { name, type, id } = res.element;
-	console.log(`Deleting ${name} ${id}...`);
+	// console.log(`Deleting ${name} ${id}...`);
 	const success = deleteFromDatabasebyId(type, id);
 	if (success) {
 		res.status(204).send();

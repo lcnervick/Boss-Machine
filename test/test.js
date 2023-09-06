@@ -378,6 +378,7 @@ describe('/api/ideas routes', function() {
     it('called with an invalid ID returns a 404 error', function() {
       return request(app)
         .put('/api/ideas/450')
+        .send({numWeeks: 1, weeklyRevenue: 1000000})
         .expect(404);
     });
 
